@@ -1,45 +1,4 @@
-#include <iostream>
-#include <chrono>
-#include <cmath>
-#include <fstream>
-using namespace std;
-using namespace std::chrono; 
 
-void intBenchmark(){
-  const int additions = pow(10,9);
-  const long long multiplications = (5 * pow(10,9)); // 5 billion
-  const long long divisions = (2* pow(10,9)); // 2 billion
-  
-  // Benchmark for additions
-  auto start = high_resolution_clock::now();
-  int sum = 0;
-  for (int i = 0; i < additions; ++i) {
-      sum += 1 + 1; // Integer constants additiong++
-}
-  auto stop = high_resolution_clock::now();
-  auto duration = duration_cast<seconds>(stop - start);
-  cout << "Integer addition time: " << duration.count() << "seconds";
-
-  // Benchmark for multiplications
-  start = high_resolution_clock::now();
-  long long product = 1;
-  for (long long i = 0; i < multiplications; ++i) {
-      product *= 2 * 2; // Integer constants multiplication
-  }
-  stop = high_resolution_clock::now();
-  duration = duration_cast<seconds>(stop - start);
-  cout << "Integer multiplication time: " << duration.count() << "seconds";
-
-//Benchmark for division
-  start = high_resolution_clock::now();
-  long long result = 1;
-  for (long long i = 0; i < divisions; ++i) {
-      result /= 2 / 2; // Integer constants division
-  }
-  stop = high_resolution_clock::now();
-  duration = duration_cast<seconds>(stop - start);
-  cout << "Integer division time: " << duration.count() << "seconds";
-}
 void floatBenchmark(){
   auto start = high_resolution_clock::now();
   const int operations = 1010;
@@ -50,8 +9,8 @@ void floatBenchmark(){
       result = operand1 / operand2; // Floating point division
   }
   auto stop = high_resolution_clock::now();
-  auto duration = duration_cast<seconds>(stop - start);
-  cout << "Floating point operation time: " << duration.count() << "seconds";
+  auto duration = duration_cast<milliseconds>(stop - start);
+  cout << "Floating point operation time: " << duration.count() << " milliseconds";
 }
 
 void memBenchmark(){
@@ -65,8 +24,8 @@ void memBenchmark(){
       array[i * bytes] = value + 1;
   }
   auto stop = high_resolution_clock::now();
-  auto duration = duration_cast<seconds>(stop - start);
-  cout << "Memory benchmark time: " << duration.count() << "seconds";
+  auto duration = duration_cast<milliseconds>(stop - start);
+  cout << "Memory benchmark time: " << duration.count() << " milliseconds";
 
   delete[] array;
 }
@@ -86,8 +45,8 @@ void hardDriveBenchmark1(){
   }
   inputFile.close();
   auto stop = high_resolution_clock::now();
-  auto duration = duration_cast<seconds>(stop - start);
-  cout << "Read time: " << duration.count() << " seconds";
+  auto duration = duration_cast<milliseconds>(stop - start);
+  cout << "Read time: " << duration.count() << " milliseconds";
 
 // Benchmark for writing to memory
  start = high_resolution_clock::now();
@@ -99,8 +58,8 @@ void hardDriveBenchmark1(){
   }
   outputFile.close();
   stop = high_resolution_clock::now();
-  duration = duration_cast<seconds>(stop - start);
-  cout << "Write time: " << duration.count() << " seconds";
+  duration = duration_cast<milliseconds>(stop - start);
+  cout << "Write time: " << duration.count() << " milliseconds";
 }
 
 void hardDriveBenchmark2(){
@@ -117,8 +76,8 @@ void hardDriveBenchmark2(){
   }
   inputFile.close();
   auto stop = high_resolution_clock::now();
-  auto duration = duration_cast<seconds>(stop - start);
-  cout << "Read time: " << duration.count() << " seconds";
+  auto duration = duration_cast<milliseconds>(stop - start);
+  cout << "Read time: " << duration.count() << " milliseconds";
 
  // Benchmark for writing to file
   start = high_resolution_clock::now();
@@ -130,20 +89,6 @@ void hardDriveBenchmark2(){
     }
   outputFile.close();
   stop = high_resolution_clock::now();
-  duration = duration_cast<seconds>(stop - start);
-  cout << "Write time: " << duration.count() << " seconds";
+  duration = duration_cast<milliseconds>(stop - start);
+  cout << "Write time: " << duration.count() << " milliseconds";
 }
-
-
-int main() {
-  intBenchmark();
-  floatBenchmark();
-  memBenchmark();
-  hardDriveBenchmark1();
-  hardDriveBenchmark2();
-
-  return 0;
-
-}
-
-
