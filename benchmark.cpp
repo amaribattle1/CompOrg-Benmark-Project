@@ -5,14 +5,14 @@ using namespace std;
 using namespace std::chrono; 
 
 void intBenchmark(){
-  const int ADDITIONS = pow(10,9);
-  const long long MULTIPLICATIONS = (5 * pow(10,9)); // 5 billion
-  const long long DIVISIONS = (2* pow(10,9)); // 2 billion
+  const int additions = pow(10,9);
+  const long long multiplications = (5 * pow(10,9)); // 5 billion
+  const long long division = (2* pow(10,9)); // 2 billion
   
   // Benchmark for additions
   auto start = high_resolution_clock::now();
   int sum = 0;
-  for (int i = 0; i < ADDITIONS; ++i) {
+  for (int i = 0; i < additions; ++i) {
       sum += 1 + 1; // Integer constants addition
 }
   auto stop = high_resolution_clock::now();
@@ -22,7 +22,7 @@ void intBenchmark(){
   // Benchmark for multiplications
   start = high_resolution_clock::now();
   long long product = 1;
-  for (long long i = 0; i < MULTIPLICATIONS; ++i) {
+  for (long long i = 0; i < multiplications; ++i) {
       product *= 2 * 2; // Integer constants multiplication
   }
   stop = high_resolution_clock::now();
@@ -32,7 +32,7 @@ void intBenchmark(){
 //Benchmark for division
   start = high_resolution_clock::now();
   long long result = 1;
-  for (long long i = 0; i < DIVISIONS; ++i) {
+  for (long long i = 0; i < divisions; ++i) {
       result /= 2 / 2; // Integer constants division
   }
   stop = high_resolution_clock::now();
@@ -42,7 +42,13 @@ void intBenchmark(){
 
 void floatBenchmark(){
   auto start = high_resolution_clock::now();
-  
+  const int operations = pow(10,10);
+  double operand1 = 1.0, operand2 = 2.0, result = 0.0;
+  for (int i = 0; i < operations; ++i) {
+      result = operand1 + operand2; // Floating point addition
+      result = operand1 * operand2; // Floating point multiplication
+      result = operand1 / operand2; // Floating point division
+  }
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
   cout << "Floating point operation time: " << duration.count() << " milliseconds\n";
