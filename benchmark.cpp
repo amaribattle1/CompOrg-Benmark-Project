@@ -107,21 +107,21 @@ void hardDriveBenchmark1(){
 void hardDriveBenchmark2(){
   const long long file_size = pow(10,9); // 10^9 bytes
   const int chunk_size = 10000; // 10000 bytes each time
+  //Benchmark for reading a file
   auto start = high_resolution_clock::now();
-  
+  ifstream inputFile("input_file.bin", ios::binary);
+  char buffer[chunk_size];
+  long long bytesRead = 0;
+  while (bytesRead < file_size) {
+      inputFile.read(buffer, chunk_size);
+      bytesRead += inputFile.gcount();
+  }
+  inputFile.close();
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
-  cout << "Hard drive benchmark 2 time: " << duration.count() << " milliseconds";
-
+  cout << "Read time: " << duration.count() << " milliseconds;
 }
 
 
 
-int main() {
-  intBenchmark();
-  floatBenchmark();
-  hardDriveBenchmark1();
-  hardDriveBenchmark2();
 
-  return 0;
-}

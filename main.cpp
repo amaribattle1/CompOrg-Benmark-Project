@@ -1,6 +1,13 @@
 #include <iostream>
+#include benchmark.cpp;
 using namespace std;
 
 int main() {
-  cout << "Hello World!";
+  intBenchmark();
+  floatBenchmark();
+  hardDriveBenchmark1();
+  hardDriveBenchmark2();
+
+  return 0;
+
 }
