@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <cmath>
+#include <fstream>
 using namespace std;
 using namespace std::chrono; 
 
@@ -42,7 +43,7 @@ void intBenchmark(){
 
 void floatBenchmark(){
   auto start = high_resolution_clock::now();
-  const int operations = pow(10,10);
+  const int operations = 1010;
   double operand1 = 1.0, operand2 = 2.0, result = 0.0;
   for (int i = 0; i < operations; ++i) {
       result = operand1 + operand2; // Floating point addition
@@ -72,11 +73,22 @@ void memBenchmark(){
 }
 
 void hardDriveBenchmark1(){
+  const long long read_bytes = pow(10,9); // 10^9 bytes
+  const int chunk_size = 100; // 100 bytes each time
+
+  // Benchmark for reading from memory
   auto start = high_resolution_clock::now();
-  
+  ifstream inputFile("input_file.bin", ios::binary);
+  char buffer[chunk_size];
+  long long bytesRead = 0;
+  while (bytesRead < read_bytes) {
+      inputFile.read(buffer, chunk_size);
+      bytesRead += inputFile.gcount();
+  }
+  inputFile.close();
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
-  cout << "Hard drive benchmark 1 time: " << duration.count() << " milliseconds\n";
+  cout << "Read time: " << duration.count() << " milliseconds\n";
 
 }
 
