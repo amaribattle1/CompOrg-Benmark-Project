@@ -15,6 +15,10 @@ void intBenchmark(){
   for (int i = 0; i < ADDITIONS; ++i) {
       sum += 1 + 1; // Integer constants addition
 }
+  auto stop = high_resolution_clock::now();
+  auto duration = duration_cast<milliseconds>(stop - start);
+  cout << "Integer addition time: " << duration.count() << " milliseconds\n";
+}
 
 void floatBenchmark(){
   
