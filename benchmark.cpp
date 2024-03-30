@@ -35,7 +35,9 @@ void intBenchmark(){
   for (long long i = 0; i < DIVISIONS; ++i) {
       result /= 2 / 2; // Integer constants division
   }
-
+  stop = high_resolution_clock::now();
+  duration = duration_cast<milliseconds>(stop - start);
+  cout << "Integer division time: " << duration.count() << " milliseconds\n";
 }
 
 void floatBenchmark(){
