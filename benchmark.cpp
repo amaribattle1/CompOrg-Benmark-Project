@@ -18,7 +18,7 @@ void intBenchmark(){
 }
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
-  cout << "Integer addition time: " << duration.count() << " milliseconds\n";
+  cout << "Integer addition time: " << duration.count() << " milliseconds";
 
   // Benchmark for multiplications
   start = high_resolution_clock::now();
@@ -28,7 +28,7 @@ void intBenchmark(){
   }
   stop = high_resolution_clock::now();
   duration = duration_cast<milliseconds>(stop - start);
-  cout << "Integer multiplication time: " << duration.count() << " milliseconds\n";
+  cout << "Integer multiplication time: " << duration.count() << " milliseconds";
 
 //Benchmark for division
   start = high_resolution_clock::now();
@@ -38,7 +38,7 @@ void intBenchmark(){
   }
   stop = high_resolution_clock::now();
   duration = duration_cast<milliseconds>(stop - start);
-  cout << "Integer division time: " << duration.count() << " milliseconds\n";
+  cout << "Integer division time: " << duration.count() << " milliseconds";
 }
 
 void floatBenchmark(){
@@ -52,7 +52,7 @@ void floatBenchmark(){
   }
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
-  cout << "Floating point operation time: " << duration.count() << " milliseconds\n";
+  cout << "Floating point operation time: " << duration.count() << " milliseconds";
 }
 
 void memBenchmark(){
@@ -67,7 +67,7 @@ void memBenchmark(){
   }
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
-  cout << "Memory benchmark time: " << duration.count() << " milliseconds\n";
+  cout << "Memory benchmark time: " << duration.count() << " milliseconds";
 
   delete[] array;
 }
@@ -88,8 +88,20 @@ void hardDriveBenchmark1(){
   inputFile.close();
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
-  cout << "Read time: " << duration.count() << " milliseconds\n";
+  cout << "Read time: " << duration.count() << " milliseconds";
 
+// Benchmark for writing to memory
+  auto start = high_resolution_clock::now();
+  ofstream outputFile("output_file.bin", ios::binary);
+  long long bytesWritten = 0;
+  while (bytesWritten < read_bytes) {
+      outputFile.write(buffer, chunk_size);
+      bytesWritten += chunk_size;
+  }
+  outputFile.close();
+  auto stop = high_resolution_clock::now();
+  duration = duration_cast<milliseconds>(stop - start);
+  cout << "Write time: " << duration.count() << " milliseconds";
 }
 
 void hardDriveBenchmark2(){
@@ -97,7 +109,7 @@ void hardDriveBenchmark2(){
   
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
-  cout << "Hard drive benchmark 2 time: " << duration.count() << " milliseconds\n";
+  cout << "Hard drive benchmark 2 time: " << duration.count() << " milliseconds";
 
 }
 
