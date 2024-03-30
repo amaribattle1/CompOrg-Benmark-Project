@@ -52,7 +52,9 @@ void memBenchmark(){
   auto start = high_resolution_clock::now();
   
   auto stop = high_resolution_clock::now();
- 
+  auto duration = duration_cast<milliseconds>(stop - start);
+  cout << "Memory benchmark time: " << duration.count() << " milliseconds\n";
+
 }
 
 void hardDriveBenchmark1(){
