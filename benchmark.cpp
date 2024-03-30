@@ -7,7 +7,7 @@ using namespace std::chrono;
 void intBenchmark(){
   const int additions = pow(10,9);
   const long long multiplications = (5 * pow(10,9)); // 5 billion
-  const long long division = (2* pow(10,9)); // 2 billion
+  const long long divisions = (2* pow(10,9)); // 2 billion
   
   // Benchmark for additions
   auto start = high_resolution_clock::now();
@@ -60,7 +60,6 @@ void memBenchmark(){
   const int bytes = 4;
   char* array = new char[elements * bytes];
 
-  auto start = high_resolution_clock::now();
   for (long long i = 0; i < elements; ++i) {
       char value = array[i * bytes];
       array[i * bytes] = value + 1;
