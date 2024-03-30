@@ -42,22 +42,31 @@ void intBenchmark(){
 
 void floatBenchmark(){
   auto start = high_resolution_clock::now();
+  
   auto stop = high_resolution_clock::now();
+  auto duration = duration_cast<milliseconds>(stop - start);
+  cout << "Floating point operation time: " << duration.count() << " milliseconds\n";
 }
 
 void memBenchmark(){
   auto start = high_resolution_clock::now();
+  
   auto stop = high_resolution_clock::now();
+ 
 }
 
 void hardDriveBenchmark1(){
   auto start = high_resolution_clock::now();
+  
   auto stop = high_resolution_clock::now();
+ 
 }
 
 void hardDriveBenchmark2(){
   auto start = high_resolution_clock::now();
+  
   auto stop = high_resolution_clock::now();
+
 }
 
 
