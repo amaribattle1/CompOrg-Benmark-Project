@@ -18,6 +18,17 @@ void intBenchmark(){
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
   cout << "Integer addition time: " << duration.count() << " milliseconds\n";
+
+  // Benchmark for multiplications
+  start = high_resolution_clock::now();
+  long long product = 1;
+  for (long long i = 0; i < MULTIPLICATIONS; ++i) {
+      product *= 2 * 2; // Integer constants multiplication
+  }
+  stop = high_resolution_clock::now();
+  duration = duration_cast<milliseconds>(stop - start);
+  cout << "Integer multiplication time: " << duration.count() << " milliseconds\n";
+
 }
 
 void floatBenchmark(){
