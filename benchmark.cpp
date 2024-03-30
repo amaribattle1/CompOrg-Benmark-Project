@@ -91,7 +91,7 @@ void hardDriveBenchmark1(){
   cout << "Read time: " << duration.count() << " milliseconds";
 
 // Benchmark for writing to memory
-  auto start = high_resolution_clock::now();
+ start = high_resolution_clock::now();
   ofstream outputFile("output_file.bin", ios::binary);
   long long bytesWritten = 0;
   while (bytesWritten < read_bytes) {
@@ -99,7 +99,7 @@ void hardDriveBenchmark1(){
       bytesWritten += chunk_size;
   }
   outputFile.close();
-  auto stop = high_resolution_clock::now();
+  stop = high_resolution_clock::now();
   duration = duration_cast<milliseconds>(stop - start);
   cout << "Write time: " << duration.count() << " milliseconds";
 }
@@ -119,9 +119,30 @@ void hardDriveBenchmark2(){
   inputFile.close();
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
-  cout << "Read time: " << duration.count() << " milliseconds;
+  cout << "Read time: " << duration.count() << " milliseconds";
+
+ // Benchmark for writing to file
+  start = high_resolution_clock::now();
+  ofstream outputFile("output_file.bin", ios::binary);
+  long long bytesWritten = 0;
+  while (bytesWritten < file_size) {
+      outputFile.write(buffer, chunk_size);
+      bytesWritten += chunk_size;
+    }
+  outputFile.close();
+  stop = high_resolution_clock::now();
+  duration = duration_cast<milliseconds>(stop - start);
+  cout << "Write time: " << duration.count() << " milliseconds";
 }
 
+int main() {
+  intBenchmark();
+  floatBenchmark();
+  hardDriveBenchmark1();
+  hardDriveBenchmark2();
 
+  return 0;
+
+}
 
 
