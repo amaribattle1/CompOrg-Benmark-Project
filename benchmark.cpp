@@ -56,10 +56,20 @@ void floatBenchmark(){
 
 void memBenchmark(){
   auto start = high_resolution_clock::now();
-  
+  const long long elements = (5 * pow(10,9)); 
+  const int bytes = 4;
+  char* array = new char[elements * bytes];
+
+  auto start = high_resolution_clock::now();
+  for (long long i = 0; i < elements; ++i) {
+      char value = array[i * bytes];
+      array[i * bytes] = value + 1;
+  }
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
   cout << "Memory benchmark time: " << duration.count() << " milliseconds\n";
+
+  delete[] array;
 }
 
 void hardDriveBenchmark1(){
