@@ -105,6 +105,8 @@ void hardDriveBenchmark1(){
 }
 
 void hardDriveBenchmark2(){
+  const long long file_size = pow(10,9); // 10^9 bytes
+  const int chunk_size = 10000; // 10000 bytes each time
   auto start = high_resolution_clock::now();
   
   auto stop = high_resolution_clock::now();
