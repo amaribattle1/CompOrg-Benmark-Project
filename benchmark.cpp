@@ -54,20 +54,23 @@ void memBenchmark(){
   auto stop = high_resolution_clock::now();
   auto duration = duration_cast<milliseconds>(stop - start);
   cout << "Memory benchmark time: " << duration.count() << " milliseconds\n";
-
 }
 
 void hardDriveBenchmark1(){
   auto start = high_resolution_clock::now();
   
   auto stop = high_resolution_clock::now();
- 
+  auto duration = duration_cast<milliseconds>(stop - start);
+  cout << "Hard drive benchmark 1 time: " << duration.count() << " milliseconds\n";
+
 }
 
 void hardDriveBenchmark2(){
   auto start = high_resolution_clock::now();
   
   auto stop = high_resolution_clock::now();
+  auto duration = duration_cast<milliseconds>(stop - start);
+  cout << "Hard drive benchmark 2 time: " << duration.count() << " milliseconds\n";
 
 }
 
