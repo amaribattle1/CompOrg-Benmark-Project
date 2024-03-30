@@ -41,19 +41,23 @@ void intBenchmark(){
 }
 
 void floatBenchmark(){
-  
+  auto start = high_resolution_clock::now();
+  auto stop = high_resolution_clock::now();
 }
 
 void memBenchmark(){
-  
+  auto start = high_resolution_clock::now();
+  auto stop = high_resolution_clock::now();
 }
 
 void hardDriveBenchmark1(){
-  
+  auto start = high_resolution_clock::now();
+  auto stop = high_resolution_clock::now();
 }
 
 void hardDriveBenchmark2(){
-
+  auto start = high_resolution_clock::now();
+  auto stop = high_resolution_clock::now();
 }
 
 
