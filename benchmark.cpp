@@ -29,6 +29,13 @@ void intBenchmark(){
   duration = duration_cast<milliseconds>(stop - start);
   cout << "Integer multiplication time: " << duration.count() << " milliseconds\n";
 
+//Benchmark for division
+  start = high_resolution_clock::now();
+  long long result = 1;
+  for (long long i = 0; i < DIVISIONS; ++i) {
+      result /= 2 / 2; // Integer constants division
+  }
+
 }
 
 void floatBenchmark(){
