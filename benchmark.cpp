@@ -40,6 +40,7 @@ void intBenchmark(){
   duration = duration_cast<seconds>(stop - start);
   cout << "Integer division time: " << duration.count() << "seconds";
 }
+
 void floatBenchmark(){
   auto start = high_resolution_clock::now();
   const int operations = 1010;
